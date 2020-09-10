@@ -4,12 +4,18 @@ import java.util.List;
 
 class TwoSum {
 
-    public ArrayList<Integer> twoSum(List<Integer> nums, int target) {
-        ArrayList<Integer> result = new ArrayList<Integer>();
-        System.out.println(result.size());
+    /*
+        * params:
+            * List<Integer> nums - List of numbers to be searched from
+            * int target - target value that the values at the two indicies must add up to
+        * description: searches the parameter 'nums'
+        * return: ArrayList<Integer> with the two indicies; the indicies will be -1 if there is no two values found
+     */
+    public List<Integer> twoSum(List<Integer> nums, int target) {
+        ArrayList<Integer> result = new ArrayList<Integer>(2);
         for(int i = 0; i < nums.size(); i++) {
             for(int x = 0; x < nums.size(); x++) {
-                if(nums.get(i) + nums.get(x) == target && i != x) {
+                if(nums.get(i) + nums.get(x) == target && i != x && !nums.get(i).equals(nums.get(x))) {
                     result.add(i);
                     result.add(x);
                     return result;
@@ -21,6 +27,11 @@ class TwoSum {
         return result;
     }
 
+    /*
+        * params: none
+        * description: gets inputs from the user for the List to be searched
+        * return: ArrayList<Integer>
+    */
     private ArrayList<Integer> getArrayInputs() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> arr = new ArrayList<Integer>();
@@ -44,6 +55,11 @@ class TwoSum {
         return arr;
     }
 
+    /*
+        * params: none
+        * description: gets input from the user for the target value
+        * return: int
+    */
     private int getTarget() {
         Scanner scanner = new Scanner(System.in);
         boolean isInputting = true;
@@ -62,6 +78,12 @@ class TwoSum {
         return target;
     }
 
+    /*
+        * params:
+            * String input - input of type String, intended to be coming from the user
+        * description: determines whether or not the input can be converted to an int
+        * return: boolean
+    */
     private boolean isInt(String input) {
         if(input == null) {
             return false;
@@ -76,10 +98,14 @@ class TwoSum {
     }
 
     public static void main(String args[]) {
+        //instantiate
         TwoSum twoSum = new TwoSum();
+        //print welcome msg
         System.out.println("~~ TWO SUM ~~");
+        //get target and List values
         int target = twoSum.getTarget();
         ArrayList<Integer> arr = twoSum.getArrayInputs();
-        System.out.println("Result " + twoSum.twoSum(arr, target));
+        //print result
+        System.out.println("Result: " + twoSum.twoSum(arr, target));
     }
 }
